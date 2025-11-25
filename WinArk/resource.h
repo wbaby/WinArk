@@ -117,6 +117,7 @@
 #define IDD_DISASSEMBLER                313
 #define IDR_DISASM                      315
 #define IDD_PICK_DLL                    316
+#define IDD_CONFIG_SERVER               318
 #define IDC_CONFIG_LIST                 1000
 #define IDC_VALUE                       1001
 #define IDC_APPICON                     1002
@@ -261,6 +262,10 @@
 #define IDC_DISASM_FORWARD              1130
 #define IDC_DISASM                      1131
 #define IDC_DLL_LIST                    1132
+#define IDC_SZDYG                       1135
+#define IDC_EDIT1                       1136
+#define IDC_SERVER_URL                  1136
+#define IDC_MICROSOFT                   1137
 #define ID_PROCESS_THREADS              32775
 #define ID_PROCESS_MODULES              32776
 #define ID_PROCESS_KILL                 32777
@@ -539,9 +544,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        318
+#define _APS_NEXT_RESOURCE_VALUE        320
 #define _APS_NEXT_COMMAND_VALUE         33078
-#define _APS_NEXT_CONTROL_VALUE         1133
+#define _APS_NEXT_CONTROL_VALUE         1137
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

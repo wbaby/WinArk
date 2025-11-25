@@ -6,6 +6,7 @@
 #include <curlcpp/curl_easy.h>
 #include <curlcpp/curl_exception.h>
 #include <curlcpp/curl_ios.h>
+#include "ConfigServerDlg.h"
 
 using curl::curl_easy;
 using curl::curl_ios;
@@ -21,7 +22,7 @@ bool SymbolFileInfo::SymDownloadSymbol(std::wstring localPath) {
 	std::wstring path = localPath + L"\\" + _path.GetString();
 	std::filesystem::create_directories(path);
 
-	std::string url = "https://msdl.microsoft.com/download/symbols";
+	std::string url = _server;
 
 	if (url.back() != '/')
 		url += '/';
@@ -138,6 +139,12 @@ downslib_error SymbolFileInfo::Download(std::string url, std::wstring fileName, 
 }
 
 SymbolFileInfo::SymbolFileInfo() {
+	std::string url = "https://msdl.microsoft.com/download/symbols";
+	CConfigServerDbg dlg;
+	if (dlg.DoModal() == IDOK) {
+		url = dlg.GetServer();
+	}
+	_server = url;
 }
 
 SymbolFileInfo::~SymbolFileInfo() {

@@ -362,6 +362,22 @@ BEGIN
     CONTROL         "",IDC_DLL_LIST,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,399,181
 END
 
+IDD_CONFIG_SERVER DIALOGEX 0, 0, 309, 176
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Configure Symbols"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,198,155,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,252,155,50,14
+    LTEXT           "Public Symbol Server:",IDC_STATIC,19,19,70,8
+    CONTROL         "https://msdl.szdyg.cn/download/symbols",IDC_SZDYG,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,29,34,155,23
+    CONTROL         "https://msdl.microsoft.com/download/symbols",IDC_MICROSOFT,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,29,52,197,23
+    EDITTEXT        IDC_SERVER_URL,25,97,258,14,ES_AUTOHSCROLL
+    LTEXT           "Other public symbol server:",IDC_STATIC,18,82,89,8
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -496,6 +512,14 @@ BEGIN
         TOPMARGIN, 7
         BOTTOMMARGIN, 206
     END
+
+    IDD_CONFIG_SERVER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 169
+    END
 END
 #endif    // APSTUDIO_INVOKED
 
@@ -611,6 +635,11 @@ BEGIN
 END
 
 IDD_PICK_DLL AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_CONFIG_SERVER AFX_DIALOG_LAYOUT
 BEGIN
     0
 END

@@ -543,6 +543,9 @@
     <ClCompile Include="TreeImportExport.cpp">
       <Filter>Scylla</Filter>
     </ClCompile>
+    <ClCompile Include="ConfigServerDlg.cpp">
+      <Filter>Dialogs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -1093,6 +1096,9 @@
     </ClInclude>
     <ClInclude Include="TreeImportExport.h">
       <Filter>Scylla</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigServerDlg.h">
+      <Filter>Dialogs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

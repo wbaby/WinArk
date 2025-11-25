@@ -64,6 +64,7 @@ extern CAppModule _Module;
 
 #include "ThemeSystem.h"
 #include "WinSysCore.h"
+#include "SymbolFileInfo.h"
 
 template<>
 struct std::hash<CString> {
@@ -89,6 +90,8 @@ extern HWND g_hModuleFrm, g_hWndMDIClient, g_hWndTop;
 extern HBRUSH g_myBrush[20];
 
 extern t_scheme g_myScheme[8];
+
+extern SymbolFileInfo g_SymbolHelper;
 
 
 #if defined _M_IX86

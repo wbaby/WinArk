@@ -14,15 +14,14 @@ bool SymbolHelper::GetPdbFile(std::wstring fileName, std::string& pdbDir,
 	PEParser parser(path);
 	auto dir = parser.GetDataDirectory(IMAGE_DIRECTORY_ENTRY_DEBUG);
 	if (dir != nullptr) {
-		SymbolFileInfo info;
 		auto entry = static_cast<PIMAGE_DEBUG_DIRECTORY>(parser.GetAddress(dir->VirtualAddress));
 		ULONG_PTR VA = reinterpret_cast<ULONG_PTR>(parser.GetBaseAddress());
-		info.GetPdbSignature(VA, entry);
+		g_SymbolHelper.GetPdbSignature(VA, entry);
 		::GetCurrentDirectory(MAX_PATH, path);
 		wcscat_s(path, L"\\Symbols");
 		std::wstring curDir = path;
-		std::wstring dir = curDir + L"\\" + info._path.GetString();
-		std::wstring name = info._pdbFile.GetString();
+		std::wstring dir = curDir + L"\\" + g_SymbolHelper._path.GetString();
+		std::wstring name = g_SymbolHelper._pdbFile.GetString();
 		pdbDir = Helpers::WstringToString(dir);
 		pdbName = Helpers::WstringToString(name);
 		return true;

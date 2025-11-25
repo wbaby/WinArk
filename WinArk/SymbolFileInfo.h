@@ -51,4 +51,5 @@ struct SymbolFileInfo {
 	CString _pdbFile;
 	PdbValidationData _pdbValidation;
 	CString _path;
+	std::string _server = "https://msdl.microsoft.com/download/symbols";
 };

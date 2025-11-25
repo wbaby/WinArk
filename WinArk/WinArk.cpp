@@ -22,6 +22,7 @@ AppSettings _Settings;
 
 bool g_hasSymbol = true;
 HANDLE g_hSingleInstMutex{ nullptr };
+SymbolFileInfo g_SymbolHelper;
 
 void InitSymbols(std::wstring fileName) {
 	WCHAR path[MAX_PATH];
@@ -29,15 +30,16 @@ void InitSymbols(std::wstring fileName) {
 	wcscat_s(path, L"\\");
 	wcscat_s(path, fileName.c_str());
 	PEParser parser(path);
+
 	auto dir = parser.GetDataDirectory(IMAGE_DIRECTORY_ENTRY_DEBUG);
 	if (dir != nullptr) {
-		SymbolFileInfo info;
+		
 		auto entry = static_cast<PIMAGE_DEBUG_DIRECTORY>(parser.GetAddress(dir->VirtualAddress));
 		ULONG_PTR VA = reinterpret_cast<ULONG_PTR>(parser.GetBaseAddress());
-		info.GetPdbSignature(VA, entry);
+		g_SymbolHelper.GetPdbSignature(VA, entry);
 		::GetCurrentDirectory(MAX_PATH, path);
 		wcscat_s(path, L"\\Symbols");
-		bool success = info.SymDownloadSymbol(path);
+		bool success = g_SymbolHelper.SymDownloadSymbol(path);
 		if (!success)
 			g_hasSymbol = false;
 	}
